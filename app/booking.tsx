@@ -22,7 +22,7 @@ export default function Booking() {
  function nextMonth(amount:number) {setMonth(new Date(year,mon+amount,1));}
  async function submit() {
   if(busy)return;setBusy(true);setError('');
-  try {if(!requestId.current)requestId.current=crypto.randomUUID();const res=await fetch('/api/requests',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...contact,id:requestId.current,date,time,answers,consent,website})});const result=await res.json();if(!res.ok)throw new Error(result.error||'No pudimos guardar tu solicitud. Intentá de nuevo.');setReceipt(result.id);go(3);}catch(e){setError(e instanceof Error?e.message:'No pudimos conectar. Intentá de nuevo.');}finally{setBusy(false);}
+  try {if(!requestId.current)requestId.current=crypto.randomUUID();const res=await fetch('/api/requests',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...contact,id:requestId.current,date,time,answers,consent,website})});const result=await res.json() as {error?: string; id: string};if(!res.ok)throw new Error(result.error||'No pudimos guardar tu solicitud. Intentá de nuevo.');setReceipt(result.id);go(3);}catch(e){setError(e instanceof Error?e.message:'No pudimos conectar. Intentá de nuevo.');}finally{setBusy(false);}
  }
  return <>
  <header className="header"><a className="brand" href="#inicio" aria-label="Asesoría de negocio, inicio"><span className="brand-icon"><ArrowUpRight size={22}/></span><span>{BUSINESS_NAME}<small>ESTRATEGIA · PUBLICIDAD · VENTAS</small></span></a><a className="nav-link" href="#como-funciona">Cómo funciona <ArrowUpRight size={15}/></a></header>
