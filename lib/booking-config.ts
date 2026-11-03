@@ -1,4 +1,6 @@
-export const BUSINESS_NAME = 'Asesoría de negocio';
+export const BUSINESS_NAME = 'Lautaro Soto';
+export const CONTACT_EMAIL = 'lautarosotoar@gmail.com';
+export const WHATSAPP_NUMBER = '5493513980399';
 export const TIMEZONE = 'America/Argentina/Buenos_Aires';
 export const WEEKDAYS = [1, 2, 3, 4, 5];
 export const TIMES = ['10:30','11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30'];
